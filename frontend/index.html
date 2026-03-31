@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PFW Campus Lost & Found Management System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <img src="pfwlogo.png" alt="PFW Logo" class="logo" />
+      <div class="header-text">
+        <h1>Campus Lost & Found Management System</h1>
+        <p class="subtitle">Purdue University Fort Wayne</p>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="panel">
+        <form id="lostItemForm">
+          <section class="form-section">
+            <h2>Report Lost Item</h2>
+            <p class="section-text">
+              Use this form to report lost property on the Purdue University Fort Wayne campus.
+            </p>
+
+            <div class="form-group">
+              <label for="location">Building Location <span>*</span></label>
+              <select id="location" required>
+                <option value="">Select Building...</option>
+                <option value="Walb Student Union">Walb Student Union</option>
+                <option value="Liberal Arts">Liberal Arts</option>
+                <option value="Kettler Hall">Kettler Hall</option>
+                <option value="Helmke Library">Helmke Library</option>
+                <option value="Hilliard Gates Sports Center">Hilliard Gates Sports Center</option>
+                <option value="PFW Music Center">PFW Music Center</option>
+                <option value="Engineering Building">Engineering Building</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group hidden" id="otherLocationGroup">
+              <label for="otherLocation">Enter Other Location</label>
+              <input type="text" id="otherLocation" placeholder="Type building or location" />
+            </div>
+          </section>
+
+          <section class="form-section">
+            <h2>Last Seen</h2>
+            <div class="grid two-col">
+              <div class="form-group">
+                <label for="date">Date <span>*</span></label>
+                <input type="date" id="date" required />
+              </div>
+
+              <div class="form-group">
+                <label for="time">Time <span>*</span></label>
+                <input type="time" id="time" required />
+              </div>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <h2>Item Description</h2>
+
+            <div class="grid two-col">
+              <div class="form-group">
+                <label for="itemType">Item Type <span>*</span></label>
+                <input
+                  type="text"
+                  id="itemType"
+                  placeholder="Wallet, Phone, Keys..."
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="color">Color <span>*</span></label>
+                <input
+                  type="text"
+                  id="color"
+                  placeholder="Black, Blue, Red..."
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="description">Additional Description</label>
+              <textarea
+                id="description"
+                rows="4"
+                placeholder="Add any extra details about the item (brand, marks, stickers, etc.)"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="image">Upload a Photo of the Item</label>
+              <input
+                type="file"
+                id="image"
+                accept="image/*"
+                capture="environment"
+              />
+              <small class="helper-text">
+                You can take a photo or choose one from your device.
+              </small>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <h2>Contact Information</h2>
+            <div class="grid two-col">
+              <div class="form-group">
+                <label for="name">Name <span>*</span></label>
+                <input type="text" id="name" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email <span>*</span></label>
+                <input type="email" id="email" required />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone <span>*</span></label>
+                <input type="tel" id="phone" placeholder="123-456-7890" required />
+              </div>
+
+              <div class="form-group">
+                <label for="affiliation">Affiliation <span>*</span></label>
+                <select id="affiliation" required>
+                  <option value="">Choose...</option>
+                  <option value="Student">Student</option>
+                  <option value="Faculty">Faculty</option>
+                  <option value="Staff">Staff</option>
+                  <option value="Visitor">Visitor</option>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          <div class="submit-area">
+            <button type="submit" class="primary-btn">Submit Lost Item Report</button>
+          </div>
+        </form>
+
+        <div id="message" class="message"></div>
+      </section>
+
+      <section class="panel">
+        <div class="dashboard-header">
+          <div>
+            <h2>Reported Lost Items</h2>
+            <p class="section-text">
+              Search and view currently reported lost items on campus.
+            </p>
+          </div>
+
+          <div class="admin-panel">
+            <button id="adminToggleBtn" type="button" class="admin-btn">Enable Admin Mode</button>
+            <p id="adminStatus" class="admin-status">Admin Mode: OFF</p>
+          </div>
+        </div>
+
+        <input
+          type="text"
+          id="searchInput"
+          class="search-bar"
+          placeholder="Search by item type, color, or location..."
+        />
+
+        <div id="itemsList" class="items-list"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Campus Map</h2>
+        <p class="section-text">
+          Use the campus map below for location reference.
+        </p>
+
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps?q=Purdue%20University%20Fort%20Wayne&z=16&output=embed"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Purdue Fort Wayne Campus Map">
+          </iframe>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
