@@ -253,6 +253,19 @@ textarea:focus {
   border: 1px solid var(--border);
 }
 
+.admin-contact-box {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #fff8e1;
+  border: 1px solid #e6d38c;
+}
+
+.admin-contact-box h4 {
+  margin: 0 0 8px 0;
+  color: var(--black);
+}
+
 .status-open {
   color: var(--danger);
   font-weight: bold;

@@ -138,6 +138,18 @@ function displayItems(items) {
       ? `<img src="${item.image}" alt="Lost item image" class="item-image" />`
       : "";
 
+    const adminContactHtml = adminMode
+      ? `
+        <div class="admin-contact-box">
+          <h4>Admin Contact Details</h4>
+          <p><strong>Reporter:</strong> ${escapeHtml(item.name)}</p>
+          <p><strong>Email:</strong> ${escapeHtml(item.email)}</p>
+          <p><strong>Phone:</strong> ${escapeHtml(item.phone)}</p>
+          <p><strong>Affiliation:</strong> ${escapeHtml(item.affiliation)}</p>
+        </div>
+      `
+      : "";
+
     card.innerHTML = `
       <h3>${escapeHtml(item.itemType)} - ${escapeHtml(item.color)}</h3>
       <p><strong>Location:</strong> ${escapeHtml(item.location)}</p>
@@ -150,6 +162,7 @@ function displayItems(items) {
           ${escapeHtml(item.status)}
         </span>
       </p>
+      ${adminContactHtml}
       ${
         adminMode && item.status === "Open"
           ? `<button class="return-btn" data-id="${item.id}">Mark Returned</button>`
