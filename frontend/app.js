@@ -53,7 +53,7 @@ lostItemForm.addEventListener("submit", async (e) => {
   }
 
   try {
-    const response = await fetch("http://localhost:3000/items", {
+    const response = await fetch("/items", {
       method: "POST",
       body: formData
     });
@@ -100,7 +100,7 @@ searchInput.addEventListener("input", () => {
 
 async function loadItems() {
   try {
-    const response = await fetch("http://localhost:3000/items");
+    const response = await fetch("/items");
     const items = await response.json();
     allItems = items;
     applyCurrentSearch();
@@ -135,7 +135,7 @@ function displayItems(items) {
     card.className = "item-card";
 
     const imageHtml = item.image
-      ? `<img src="http://localhost:3000${item.image}" alt="Lost item image" class="item-image" />`
+      ? `<img src="${item.image}" alt="Lost item image" class="item-image" />`
       : "";
 
     card.innerHTML = `
@@ -172,7 +172,7 @@ async function markReturned(id) {
   clearMessage();
 
   try {
-    const response = await fetch(`http://localhost:3000/items/${id}/return`, {
+    const response = await fetch(`/items/${id}/return`, {
       method: "PUT"
     });
 

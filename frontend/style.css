@@ -133,6 +133,12 @@ textarea:focus {
   display: none;
 }
 
+.helper-text {
+  color: #666;
+  margin-top: 6px;
+  display: block;
+}
+
 .submit-area {
   text-align: center;
   margin-top: 24px;
